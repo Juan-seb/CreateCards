@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Qahiri&display=swap" id="fonts" rel="stylesheet">
     <link rel="stylesheet" href="./normalize.css">
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./fonts.css">
     <title>CreateCards</title>
 </head>
 
@@ -38,44 +42,54 @@
             </div>
             <div class="card_sections">
                 <section class="card_section">
-                    <h3 class="card_section-title"></h3>
-                    <p class="card_section-content"></p>
+                    <p class="card_section-title"></p>
+                    <div class="card_section-content"></div>
                 </section>
             </div>
         </div>
     </template>
 
     <template id="menu-template">
-        <label for="menu_searcher">Buscardor tu carta:</label>
-        <input type="text" name="menu_searcher">
-        <label for="menu_typeLetter">Escoge el tipo de letra:</label>
-        <select name="menu_typeLetter" class="menu_typeLetter">
+        <div class="main-menu">
+            <div class="menu_containerSearcher">
+                <label for="menu_searcher">Buscador carta:</label>
+                <div class="menu_searcher">
+                    <label for="menu_searcher-select">Escoge el campo por el cual filtrar:</label>
+                    <select name="menu_searcher-select" class="menu_searcher-select"></select>
+                    <input type="text" class="menu_searcher-input">
 
-        </select>
-        <div class="menu_theme">
-            <button class="menu_theme-buttonLight">Image Light</button>
-            <button class="menu_theme-buttonDark">Image Dark</button>
-        </div>
-        <div class="menu_containerShades">
-            <label for="menu_shades">Tonos para tus cartas</label>
-            <div class="menu_shades">
-                <button class="menu_shades-red">Red</button>
-                <button class="menu_shades-blue">Blue</button>
-                <button class="menu_shades-green">Green</button>
-                <button class="menu_shades-yellow">Yellow</button>
-                <button class="menu_shades-orange">Orange</button>
+                </div>
+            </div>
+            <label for="menu_typeLetter">Escoge el tipo de letra:</label>
+            <select name="menu_typeLetter" class="menu_typeLetter">
+
+            </select>
+            <div class="menu_theme">
+                <button class="menu_theme-buttonLight">Image Light</button>
+                <button class="menu_theme-buttonDark">Image Dark</button>
+            </div>
+            <div class="menu_containerShades">
+                <label for="menu_shades">Tonos para tus cartas:</label>
+                <div class="menu_shades">
+                    <button class="menu_shades-red">Red</button>
+                    <button class="menu_shades-blue">Blue</button>
+                    <button class="menu_shades-green">Green</button>
+                    <button class="menu_shades-yellow">Yellow</button>
+                    <button class="menu_shades-orange">Orange</button>
+                </div>
             </div>
             <label for="menu_border">Bordes</label>
+            <input type="number" name="menu_border">
+            <div class="menu_orientation">
+                <button class="menu_orientation-vertical">Vertical</button>
+                <button class="menu_orientation-horizontal">Horizontal</button>
+            </div>
+            <div class="menu_finalOption">
+                <button class="menu_finalOption-upload">Cargar nuevo excel</button>
+                <button class="menu_finalOption-code">Generar codigo</button>
+            </div>
         </div>
-        <input type="number" name="menu_border">
-        <div class="menu_orientation">
-            <button class="menu_orientation-vertical">Vertical</button>
-            <button class="menu_orientation-horizontal">Horizontal</button>
-        </div>
-        <div class="menu_finalOption">
-            <button class="menu_finalOption-upload">Cargar nuevo excel</button>
-            <button class="menu_finalOption-code">Generar codigo</button>
-        </div>
+
     </template>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
