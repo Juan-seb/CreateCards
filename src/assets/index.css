@@ -1,0 +1,284 @@
+:root{
+    --black: #1f1f1f;
+    --white: #faf0f0;
+    --red: rgb(255, 50, 50);
+    --blue: rgb(55, 55, 255);
+    --orange: rgb(255, 166, 95);
+    --green: rgb(50, 128, 50);
+    --yellow: rgb(255, 255, 50);
+    --inputColor : rgb(240, 243, 245);
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+p{
+    margin: 0;
+}
+
+/*Styles for the work space*/
+input[type="number"],
+input[type="text"],
+select{
+    background-color: var(--inputColor);
+    border-radius: 4px;
+    padding: 0.4rem 0.2rem;
+    border: none;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus{
+    border: 1px solid black;
+    outline: none;
+}
+
+.workSpace{
+    display: flex;
+    margin: 3rem auto;
+    width: 50%;
+    height: 20vh;
+    border: thin solid gray;
+}
+
+.div_inputs > input[type="text"],
+.div_inputs > input[type="number"]{
+    border: none;
+    background-color: var(--inputColor);   
+
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.space{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 7vh;
+    margin: .5rem auto;
+}
+
+.custom-file-upload {
+    border: none;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    line-height: 28px;
+    background-color: rgb(255, 60, 60);
+    color: white;
+}
+
+.custom-file-upload:hover{
+    transform: scale(1.05);
+    box-shadow: .2rem .2rem #d43232;
+}
+
+.main-menu{
+    max-width: 20vw;
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: thin solid gray;
+    overflow-y: auto;
+    background: rgb(133,158,218);
+    background: linear-gradient(180deg, rgba(133,158,218,1) 0%, rgba(154,94,94,1) 30%, rgba(255,223,223,1) 100%);
+}
+
+.main-menu > div,
+.main-menu > label {
+    margin: .8rem 0 0 0;
+}
+
+.menu_searcher{
+    margin-top: .8rem;
+}
+
+.menu_searcher-input{
+    width: 100%;
+}
+
+.menu_theme{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu_shades{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    margin: auto;
+    gap: 0.2rem;
+}
+
+.menu_shades > button{
+    width: 100%;
+    height: 50px;
+    border: none;
+}
+
+.menu_finalOption{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_upload,
+.menu_code{
+    width: 90%;
+    display: flex;
+    margin: auto;
+    margin-top: 0.5rem;
+    background-color: var(--inputColor);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.menu_upload:hover,
+.menu_code:hover{
+    background-color: var(--blue);
+    color: white;
+    transition: background-color, 2s, 1s ease;
+    transition: color, 2s, 1s ease;
+}
+
+.menu_upload > p,
+.menu_code > p{
+    width: 50%;
+    padding: 0 0.5rem;
+}
+
+.menu_upload-img,
+.menu_code-img{
+    width: 50%;
+    height: 25px;
+    margin: auto;
+}
+
+.menu_upload-img{
+    background-image: url('./upload.png');
+    background-repeat: no-repeat;
+    background-position: 50% ;
+    background-size: contain;
+}
+
+.menu_code-img{
+    background-image: url('./coding\ \(1\).png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
+.filter{
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
+}
+
+.btnTheme{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.lightBtn{
+    background-color: var(--yellow);
+    border: thin solid var(--yellow);
+}
+
+.darkBtn{
+    background-color: var(--black);
+    border: thin solid var(--black);
+}
+
+.menu_shades-red{
+    background-color: var(--red);
+}
+
+.menu_shades-blue{
+    background-color: var(--blue);
+}
+
+.menu_shades-green{
+    background-color: var(--green);
+}
+
+.menu_shades-yellow{
+    background-color: var(--yellow);
+}
+
+.menu_shades-orange{
+    background-color: var(--orange);
+}
+
+#any{
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+/*Styles header*/
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 9vh;
+    align-items: center;
+    justify-content: end;
+    background: rgb(186,27,70);
+    background: linear-gradient(90deg, rgba(186,27,70,1) 0%, rgba(212,50,50,1) 33%, rgba(43,19,227,1) 100%);
+}
+
+.header > p{
+    font-size: 1.8rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+/*Styles introduction */
+
+.introduction{
+    display: flex;
+    width: 90%;
+    height: 45vh;
+    margin: 0 auto; 
+}
+
+.introduction > div{
+    width: 50%;
+}
+
+.introduction_image > div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_image > img{
+    box-shadow: .3rem .3rem rgb(97, 97, 97);
+}
+
+.container_introduction{
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.container_introduction > ul > li{
+    margin-top: 0.5rem;
+}
+
+/*If I need that a element no render*/
+
+.null{
+    display: none;
+}

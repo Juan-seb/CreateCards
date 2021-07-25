@@ -8,9 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Qahiri&display=swap" id="fonts" rel="stylesheet">
-    <link rel="stylesheet" href="./normalize.css">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./assets/normalize.css">
+    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="./assets/cards.css">
+    <link rel="stylesheet" href="./assets/fonts.css">
+    <style id="styles">
+        p {
+            margin: 0;
+        }
+    </style>
     <title>CreateCards</title>
 </head>
 
@@ -18,14 +24,15 @@
 
     <header class="header"></header>
     <main>
-        <section class="useInstructions"></section>
-        <section class="workSpace">
-            <div class="space">
-                <label class="custom-file-upload">
-                    <input type="file" class="space-files" accept=".xls,.xlsx" />
-                    Subir tu documento Excel
-                </label>
-            </div>
+        <section class="introduction"></section>
+        <div class="space">
+            <label class="custom-file-upload">
+                <input type="file" class="space-files" accept=".xls,.xlsx" />
+                Subir tu documento Excel
+            </label>
+        </div>
+        <section class="workSpace null">
+            
             <div class="menu">
 
             </div>
@@ -33,6 +40,7 @@
 
             </div>
         </section>
+        
     </main>
 
     <template id="card-template">
@@ -52,47 +60,69 @@
     <template id="menu-template">
         <div class="main-menu">
             <div class="menu_containerSearcher">
-                <label for="menu_searcher">Buscador carta:</label>
+                <p>Busca tu tarjeta:</p>
+                <label for="menu_searcher-select">Escoge el campo por el cual filtrar:</label>
+                <select name="menu_searcher-select" class="menu_searcher-select"></select>
                 <div class="menu_searcher">
-                    <label for="menu_searcher-select">Escoge el campo por el cual filtrar:</label>
-                    <select name="menu_searcher-select" class="menu_searcher-select"></select>
-                    <input type="text" class="menu_searcher-input">
-
+                    <input type="text" class="menu_searcher-input" placeholder="Texto a buscar">
                 </div>
             </div>
             <label for="menu_typeLetter">Escoge el tipo de letra:</label>
             <select name="menu_typeLetter" class="menu_typeLetter">
-
             </select>
-            <div class="menu_theme">
-                <button class="menu_theme-buttonLight">Image Light</button>
-                <button class="menu_theme-buttonDark">Image Dark</button>
+
+            <div class="menu_sizeTitles">
+                <p>
+                    El tamaño para los titulos es de: <input type="number" class="menu_sizeTitles-input" min="12"
+                        max="36"> pts
+                </p>
             </div>
+            <div class="menu_sizeText">
+                <p>
+                    El tamaño para los textos es de:
+                    <input type="number" class="menu_sizeText-input" min="12" max="36"> pts
+                </p>
+            </div>
+            <div class="menu_theme">
+                <label for="menu_themeBtn">Escoge el tema para tus cartas:</label>
+                <button class="btnTheme lightBtn ">☀️</button>
+                <span class="menu_theme-value">Light</span>
+            </div>
+
             <div class="menu_containerShades">
-                <label for="menu_shades">Tonos para tus cartas:</label>
+                <label for="menu_shades">Tonos para las cartas:</label>
                 <div class="menu_shades">
-                    <button class="menu_shades-red">Red</button>
-                    <button class="menu_shades-blue">Blue</button>
-                    <button class="menu_shades-green">Green</button>
-                    <button class="menu_shades-yellow">Yellow</button>
-                    <button class="menu_shades-orange">Orange</button>
+                    <button class="menu_shades-red"></button>
+                    <button class="menu_shades-blue"></button>
+                    <button class="menu_shades-green"></button>
+                    <button class="menu_shades-yellow"></button>
+                    <button class="menu_shades-orange"></button>
+                    <button class="menu_shades-any" id="any"></button>
                 </div>
             </div>
-            <label for="menu_border">Bordes</label>
-            <input type="number" name="menu_border">
-            <div class="menu_orientation">
-                <button class="menu_orientation-vertical">Vertical</button>
-                <button class="menu_orientation-horizontal">Horizontal</button>
+            <div class="menu_contentBorder">
+                <label for="menu_border">Bordes:</label>
+                <input type="number" name="menu_border" class="menu_border" min="0" max="10">
             </div>
             <div class="menu_finalOption">
-                <button class="menu_finalOption-upload">Cargar nuevo excel</button>
-                <button class="menu_finalOption-code">Generar codigo</button>
+                <div class="menu_upload">
+                    <div class="menu_upload-img">
+
+                    </div>
+                    <p>Cargar nuevo excel</p>
+                </div>
+                <div class="menu_code">
+                    <div class="menu_code-img">
+
+                    </div>
+                    <p>Generar codigo</p>
+                </div>
             </div>
         </div>
-
     </template>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="./js/App.js" type="module"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
-<script src="./js/App.js" type="module"></script>
 
 </html>

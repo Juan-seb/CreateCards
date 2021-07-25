@@ -6,9 +6,11 @@ const Cards = new Component({
     el: ".cards",
     data: { // State of the component Cards
         typeLetter: "Roboto",
-        letterBefore: "",
+        sizeTitles: 1,
+        sizeText: 1,
         theme: "light",
         shade: "null",
+        orientation: "",
         border: 0,
         dataExcel: [],
         filterField: "",
@@ -24,9 +26,12 @@ const Cards = new Component({
             const $card = d.getElementById('card-template').content;
             const $cards = d.createDocumentFragment();
 
+            
             // For each object that contain the data of a row of the excel generate the ui
             data.dataExcel.forEach(el => {
-
+                
+                //Clone the card because the template should not be modified
+                let $cloneCard = document.importNode($card, true);
                 const $contentCard = d.createDocumentFragment();
 
                 for (let key in el) {
@@ -36,11 +41,14 @@ const Cards = new Component({
 
                     // If the key is a image add the attribute src of the card
                     if ((key == 'Imagen') || (key == 'Image')) {
-                        $sectionCard.querySelector('.card_img').setAttribute('src', el[key]);
+                        $cloneCard.querySelector('.card_img').src = el[key];
                     } else {
                         // Add the title and the contain of the card
                         $sectionCard.querySelector('.card_section-title').textContent = key;
+                        $sectionCard.querySelector('.card_section-title').style.fontSize = `${data.sizeTitles}rem`;
+
                         $sectionCard.querySelector('.card_section-content').textContent = el[key];
+                        $sectionCard.querySelector('.card_section-content').style.fontSize = `${data.sizeText}rem`;
                     }
 
                     // Add the clone section to the document fragment
@@ -48,18 +56,18 @@ const Cards = new Component({
 
                 }
 
-                //Clone the card because the template should not be modified
-                let $cloneCard = document.importNode($card, true);
-
                 // Delete all elements that in the moment have the card clon.
                 $cloneCard.querySelector('.card_sections').innerHTML = '';
                 
-                //Add the styles of the card
+                // Add the sections to the clone card.
                 $cloneCard.querySelector('.card_sections').appendChild($contentCard);
+                
+                //Add the styles of the card
+                data.orientation && $cloneCard.querySelector('.card').classList.add(`${data.orientation}`);
                 $cloneCard.querySelector('.card').classList.add(`${data.theme}`);
-                $cloneCard.querySelector('.card').classList.add(`${data.shade}`);
                 $cloneCard.querySelector('.card').classList.add(`${data.typeLetter.replace(/ /g, '-')}`)
-                $cloneCard.querySelector('.card').setAttribute('style', `border-radius: ${data.border};`)
+                $cloneCard.querySelector('.card').setAttribute('style', `border-radius: ${data.border}%;`)
+                $cloneCard.querySelector('.card').classList.add(`${data.shade}`);
 
                 //Add the card to fragment that contain all cards.
                 $cards.appendChild($cloneCard);

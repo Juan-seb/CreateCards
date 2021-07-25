@@ -4,12 +4,13 @@ import Menu from "./components/Menu.js";
 import Cards from "./components/Cards.js";
 import { getFont } from "./helpers/requestFonts.js";
 import searchFilter from "./events/searchFilter.js";
+import clicEvents from "./events/clickEvents.js";
 
 const d = document;
 const options = {
     card: '.card',
     input: '.menu_searcher-input',
-    select : '.menu_searcher-select',
+    select: '.menu_searcher-select',
     section: '.card_section',
     sectionTitle: '.card_section-title',
     sectionContent: '.card_section-content',
@@ -19,15 +20,19 @@ const options = {
 let selectedFile;
 let rowObject;
 
+
 d.addEventListener('DOMContentLoaded', () => {
 
     //Render the initial components
     Header.render();
     Introduction.render();
 
+    clicEvents();
+
     // Call the function to manage the filter input
     searchFilter(options)
-})
+
+});
 
 d.addEventListener('change', (e) => {
 
@@ -68,6 +73,13 @@ d.addEventListener('change', (e) => {
                         charge: true
                     })
 
+                    d.querySelector('.space').classList.add('null');
+                    d.querySelector('.workSpace').classList.remove('null');
+
+                    // Add the dimensions of the workspace.
+                    d.querySelector('.workSpace').style.width = '95%';
+                    d.querySelector('.workSpace').style.height = '123vh';
+
                 });
             }
         }
@@ -75,7 +87,7 @@ d.addEventListener('change', (e) => {
         // Get the fonts for the api of google fonts
         getFont().then(res => {
 
-            // For each font in the range of 0 to 49 create a select and inject in the fragment
+            // For each font in the range of 0 to 49 create a tag select and inject in the fragment
             res.items.forEach((font, index) => {
                 if (index < 50) {
                     const $option = d.createElement('option');
@@ -95,13 +107,11 @@ d.addEventListener('change', (e) => {
 
         })
 
-
-        console.log(selectedFile);
     }
 
     if (e.target.matches('.menu_typeLetter')) {
         console.log(e.target.value)
-        
+
         // Change the href so that the cards can use the different fonts 
         d.querySelector('#fonts').href = `https://fonts.googleapis.com/css2?family=Roboto&family=${e.target.value.replace(/ /g, '+')}&display=swap`
 
@@ -112,20 +122,37 @@ d.addEventListener('change', (e) => {
 
     }
 
-})
-
-
-
-
-d.addEventListener('click', (e) => {
-    if (e.target.matches('.menu_theme-buttonDark')) {
+    // Update the property border of the state
+    if (e.target.matches('.menu_border')) {
         Cards.setState({
-            theme: 'dark',
-        }) 
+            border: e.target.value
+        })
     }
+
+    if (e.target.matches('.menu_sizeTitles-input') || e.target.matches('.menu_sizeText-input')) {
+
+        // Verify if the value of the inputs is the correct.
+        if ((e.target.value < 12) || (e.target.value > 36)) {
+            e.target.value = 12
+            return
+        }
+
+        // From pts to rems
+        const rems = (e.target.value) / 12
+
+        // Update the state of the targets.
+        if (e.target.classList.contains('menu_sizeTitles-input')) {
+            Cards.setState({
+                sizeTitles: rems
+            })
+        } else {
+            Cards.setState({
+                sizeText: rems
+            })
+
+        }
+    }
+
 })
 
 console.log(window.XLSX);
-
-
-

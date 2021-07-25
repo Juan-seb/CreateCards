@@ -15,9 +15,6 @@ const Menu = new Component({
         // If the request of fonts have successfully
         if (data.charge) {
 
-            // Delete the section to upload the file.
-            d.querySelector('.workSpace').removeChild(d.querySelector('.space'));
-
             // Select the template of the menu
             const $menu = d.getElementById('menu-template').content;
 
