@@ -148,24 +148,33 @@ input[type="file"] {
     transition: color, 2s, 1s ease;
 }
 
-.menu_upload > p,
 .menu_code > p{
     width: 50%;
     padding: 0 0.5rem;
 }
 
-.menu_upload-img,
+.upload_excel{
+    position: relative;
+    width: 100%;    
+    cursor: pointer;
+    height: 25px;
+    margin-bottom: 0.5rem;
+}
+
+.file-upload{
+    position: absolute;
+    width: 100%;
+    height: 35px;
+    top: 0;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+}
+
 .menu_code-img{
     width: 50%;
     height: 25px;
     margin: auto;
-}
-
-.menu_upload-img{
-    background-image: url('./upload.png');
-    background-repeat: no-repeat;
-    background-position: 50% ;
-    background-size: contain;
 }
 
 .menu_code-img{
@@ -281,4 +290,18 @@ input[type="file"] {
 
 .null{
     display: none;
+}
+
+pre{
+    width: 80%;
+}
+
+code{
+    font-family: Consolas,"courier new";
+    color: crimson;
+    background-color: #f1f1f1;
+    padding: 2px;
+    font-size: 105%;
+    word-wrap: break-word;
+    overflow: hidden;
 }

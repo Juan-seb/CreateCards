@@ -37,7 +37,10 @@ d.addEventListener('DOMContentLoaded', () => {
 d.addEventListener('change', (e) => {
 
     // If the event origins in the .space-files execute
-    if (e.target.matches('.space-files')) {
+    if (e.target.matches('.space-files') || e.target.matches('.file-upload')) {
+
+            d.querySelector('.menu').innerHTML = '';
+            d.querySelector('.cards').innerHTML = '';
 
         // Create a fragment that is responsible for storing the options of the font
         const $fontOptions = d.createDocumentFragment();
@@ -79,6 +82,8 @@ d.addEventListener('change', (e) => {
                     // Add the dimensions of the workspace.
                     d.querySelector('.workSpace').style.width = '95%';
                     d.querySelector('.workSpace').style.height = '123vh';
+                    
+                    
 
                 });
             }
@@ -152,7 +157,6 @@ d.addEventListener('change', (e) => {
 
         }
     }
-
 })
 
 console.log(window.XLSX);

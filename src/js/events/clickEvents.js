@@ -1,9 +1,12 @@
+import Cards from "../components/Cards.js";
+
 const clicEvents = () => {
 
     const d = document;
 
     d.addEventListener('click', (e) => {
 
+        console.log(e.target)
         // Modify the theme of the card
         if (e.target.matches('.btnTheme')) {
 
@@ -29,7 +32,7 @@ const clicEvents = () => {
 
         // Modify the sades of the card
         if (e.target.matches('.menu_shades-red')) {
-            console.log(e.target.value)
+            
             Cards.setState({
                 shade: "red"
             })
@@ -65,9 +68,22 @@ const clicEvents = () => {
             })
         }
 
-        // Clean the work work
+        // Generate the code
 
-        /* if (e.target.matches('.')) */
+        if (e.target.matches('.menu_code > p') || e.target.matches('.menu_code-img')){
+            console.log("Hecho")
+            const codes = d.querySelectorAll('.card');
+            let codeHTML = ``;
+
+            codes.forEach(element => {
+                codeHTML += element.outerHTML + `\n`;
+            });
+
+            d.querySelector('.coding').textContent=`<div class="cards">
+                ${codeHTML}
+            </div>`
+
+        }
 
     })
 
